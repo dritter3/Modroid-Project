@@ -31,7 +31,18 @@ public class Person2 {
 	 */
 	private String calc(String input) {
 	  //Person 2 put your implementation here
-	  return null;
+	  String result = "";
+		
+	  while(input.length() ! = 0)
+	  {
+	  	int index = (int)Math.floor(Math.random() * s.length());
+	  	char c = input.charAt(index);
+	  	input = input.substring(0,index)+input.substring(index+1);
+	  	result = result+c;
+
+	  }
+
+	  return result;
 	}
 	/**
 	 * Return a string rep of this object
