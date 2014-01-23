@@ -46,11 +46,12 @@ public class Person3 {
 
         char temp[] = new char[input.length()];
         for(int i = input.length() - 1; i >= 0; i--) {
-            temp[i] = input.charAt(i);
+            temp[i] = input.charAt(input.length() - i - 1);
         }
         String result = String.valueOf(temp);
 
     
 	  return result;
     }
+
 }
