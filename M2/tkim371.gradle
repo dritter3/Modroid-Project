@@ -1,0 +1,22 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+version = '1.0'
+
+jar {
+	manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile files('./lib/resources.jar')
+}
+
+test {
+    systemProperties 'property': 'value'
+}
