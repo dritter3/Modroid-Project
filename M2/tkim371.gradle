@@ -1,22 +1,25 @@
+defaultTasks 'jar'
+
+
 apply plugin: 'java'
 
-sourceCompatibility = 1.5
+
+sourceCompatibility = 1.7
 version = '1.0'
 
+
 jar {
-	manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version , 'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain', 'Class-Path' : '../lib/resource.jar'
     }
 }
+
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-	compile files('./lib/resources.jar')
-}
-
-test {
-    systemProperties 'property': 'value'
+        compile files('lib/resource.jar')
+        compile fileTree(dir: 'lib', include: '*jar') 
 }
