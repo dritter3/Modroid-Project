@@ -1,4 +1,4 @@
-defaultTasks 'jar'
+defaultTasks 'jar' 
 
 apply plugin: 'java'  
 
