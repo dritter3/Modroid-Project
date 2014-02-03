@@ -117,10 +117,13 @@ public class FullscreenActivity extends Activity {
         
         
         
+        //------------implement part ---------------------------------------
+        
         //setting RegistrationButton
         findViewById(R.id.registrationButton).setOnTouchListener(mDelayHideTouchListener);
         
-        //setting LoginButton  Feb 2nd
+        
+        //setting LoginButton -- on Feb 2nd
         Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnTouchListener(mDelayHideTouchListener);
         loginButton.setOnClickListener(new OnClickListener() {
@@ -130,6 +133,8 @@ public class FullscreenActivity extends Activity {
         		startActivity(loadLoginPage);
         	}
         });
+        
+        //------------end of implement part ---------------------------------
     }
 
     @Override
@@ -141,11 +146,6 @@ public class FullscreenActivity extends Activity {
         // are available.
         delayedHide(100);
     }
-    
-    public void userLogin(){
-    	
-    }
-
 
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the
