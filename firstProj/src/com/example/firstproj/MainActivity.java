@@ -8,22 +8,26 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+
 public class MainActivity extends Activity {
+	
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		Button logButton = (Button) findViewById(R.id.button_login_start);
-		logButton.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
+		Button button = (Button) findViewById(R.id.button_login_start);
+		button.setOnClickListener(new OnClickListener() {
+			public void onClick(View view) {
 				Intent intent = new Intent(MainActivity.this, LoginPage.class);
 				startActivity(intent);
 			}
 		});
-		
-		
+
 	}
 
 	@Override

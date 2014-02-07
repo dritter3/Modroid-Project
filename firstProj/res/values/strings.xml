@@ -9,5 +9,11 @@
     <string name="register">Register</string>
     <string name="title_activity_login_page">LoginPage</string>
     <string name="password">Password</string>
-
+    <string name="title_activity_success_login">SuccessLogin</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="loginSuccess">Success!</string>
+	<string name="rejectLogin">Wrong e-mail or password!
+	    Try again!</string>
+	<string name="ok">Ok</string>
+	<string name="cancle">Cancle</string>
 </resources>
