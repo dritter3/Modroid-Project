@@ -11,8 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class LoginPage extends FragmentActivity  {
-	private final String adminId = "admin";
-	private final String adminPassword = "pass123";
+	//private final String adminId = "admin";
+	//private final String adminPassword = "pass123";
+	
+	private UserList list;
+	//private UserAccount toAdd;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,8 @@ public class LoginPage extends FragmentActivity  {
 		setContentView(R.layout.activity_login_page);
 		inputId = (EditText)findViewById(R.id.edit_id);
 		inputPassword = (EditText) findViewById(R.id.edit_password);
-
+		list = new UserList();
+	
 		
 		Button loginButton = (Button) findViewById(R.id.button_login);
 		loginButton.setOnClickListener(new OnClickListener() {
@@ -33,7 +37,8 @@ public class LoginPage extends FragmentActivity  {
 
 				String idString = inputId.getText().toString();
 				String passwordString = inputPassword.getText().toString();
-				if(adminId.equals(idString) && adminPassword.equals(passwordString)) {
+				System.out.println("you just clicked the button");
+				if(list.verifyAccount(idString, passwordString) ) {
 					Intent intent = new Intent(LoginPage.this, SuccessLogin.class);
 					startActivity(intent);
 				} else {

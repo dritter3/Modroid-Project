@@ -1,4 +1,4 @@
-package com.example.modroid_app;
+package com.example.firstproj;
 
 public abstract class User {
 
@@ -19,7 +19,8 @@ public abstract class User {
 		this.userName = userName;
 	}
 	
-	public void setPSW(){
+	public void setPSW(String userPSW){
+		this.userPSW = userPSW;
 		
 	}
 	
@@ -31,7 +32,7 @@ public abstract class User {
 	}
 
 	public boolean equals(Object toCompare){
-		if(toCompare == null){
+		if (toCompare == null) {
 			return false;
 		}
 		if(toCompare instanceof User){

@@ -1,16 +1,17 @@
-package com.example.modroid_app;
-import java.util.*;
+package com.example.firstproj;
+import java.util.ArrayList;
 
 public class UserList {
 
 	private ArrayList<User> list;
 	
 	public UserList() {
-		list = new ArrayList();
+		list = new ArrayList<User>();
 		list.add(new AdminAccount());
 	}
 	
-	public boolean contains(String name, String psw) {
+	public boolean verifyAccount(String name, String psw) {
+		System.out.println("looking for user account");
 		return list.contains(new UserAccount(name, psw));
 	}
 	

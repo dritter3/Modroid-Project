@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
 		Button button = (Button) findViewById(R.id.button_login_start);
 		button.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
+				System.out.println("test");
 				Intent intent = new Intent(MainActivity.this, LoginPage.class);
 				startActivity(intent);
 			}

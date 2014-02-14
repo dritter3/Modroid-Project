@@ -20,6 +20,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class color {
         public static final int black_overlay=0x7f040000;
+        public static final int error_info=0x7f040001;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -35,45 +36,56 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_forgot_password=0x7f090008;
-        public static final int action_settings=0x7f090007;
+        public static final int action_forgot_password=0x7f09000a;
+        public static final int action_settings=0x7f090009;
+        public static final int create=0x7f090008;
+        public static final int error_msg=0x7f090007;
         public static final int fullscreen_content=0x7f090000;
         public static final int fullscreen_content_controls=0x7f090001;
         public static final int loginButton=0x7f090003;
-        public static final int loginRequest=0x7f090006;
+        public static final int loginRequest=0x7f090004;
         public static final int registrationButton=0x7f090002;
-        public static final int userNameInput=0x7f090004;
+        public static final int userNameInput=0x7f090006;
         public static final int userPassword=0x7f090005;
     }
     public static final class layout {
-        public static final int activity_fullscreen=0x7f030000;
-        public static final int activity_login_page=0x7f030001;
+        public static final int activity_account_manage_page=0x7f030000;
+        public static final int activity_fullscreen=0x7f030001;
+        public static final int activity_login_page=0x7f030002;
+        public static final int activity_register__page=0x7f030003;
     }
     public static final class menu {
-        public static final int login_page=0x7f080000;
-        public static final int user_login_page=0x7f080001;
+        public static final int account_manage_page=0x7f080000;
+        public static final int login_page=0x7f080001;
+        public static final int register__page=0x7f080002;
+        public static final int user_login_page=0x7f080003;
     }
     public static final class string {
         public static final int action_forgot_password=0x7f060003;
-        public static final int action_settings=0x7f060010;
+        public static final int action_settings=0x7f060013;
         public static final int action_sign_in_short=0x7f060002;
-        public static final int app_name=0x7f060009;
-        public static final int dummy_button=0x7f06000a;
-        public static final int dummy_content=0x7f06000c;
+        public static final int app_name=0x7f06000c;
+        public static final int create_username=0x7f06000b;
+        public static final int dummy_button=0x7f06000d;
+        public static final int dummy_content=0x7f06000f;
         public static final int error_field_required=0x7f060008;
         public static final int error_incorrect_password=0x7f060007;
         public static final int error_invalid_password=0x7f060006;
         public static final int error_invalid_userName=0x7f060005;
-        public static final int hello_world=0x7f060011;
+        public static final int error_message=0x7f060009;
+        public static final int hello_world=0x7f060014;
         public static final int login_progress_signing_in=0x7f060004;
-        public static final int modroid_welcome=0x7f06000b;
+        public static final int login_success=0x7f06000a;
+        public static final int modroid_welcome=0x7f06000e;
         public static final int prompt_password=0x7f060001;
         /**  Strings related to login 
          */
         public static final int prompt_userName=0x7f060000;
-        public static final int title_activity_login_page=0x7f06000f;
-        public static final int user_login=0x7f06000d;
-        public static final int user_register=0x7f06000e;
+        public static final int title_activity_account_manage_page=0x7f060015;
+        public static final int title_activity_login_page=0x7f060012;
+        public static final int title_activity_register__page=0x7f060016;
+        public static final int user_login=0x7f060010;
+        public static final int user_register=0x7f060011;
     }
     public static final class style {
         /** 

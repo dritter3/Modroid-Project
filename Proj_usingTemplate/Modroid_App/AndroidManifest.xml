@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="12"
         android:targetSdkVersion="22" />
 
     <application
@@ -27,6 +27,14 @@
         <activity
             android:name="com.example.modroid_app.LoginPage"
             android:label="@string/title_activity_login_page" >
+        </activity>
+        <activity
+            android:name="com.example.modroid_app.AccountManagePage"
+            android:label="@string/title_activity_account_manage_page" >
+        </activity>
+        <activity
+            android:name="com.example.modroid_app.Register_Page"
+            android:label="@string/title_activity_register__page" >
         </activity>
     </application>
 

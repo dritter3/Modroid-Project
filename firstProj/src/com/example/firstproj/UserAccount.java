@@ -1,4 +1,4 @@
-package com.example.modroid_app;
+package com.example.firstproj;
 
 public class UserAccount extends User {
 	
