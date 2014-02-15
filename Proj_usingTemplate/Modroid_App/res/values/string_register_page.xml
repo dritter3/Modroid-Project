@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="create_username">create username</string>
+    <string name="hint_typeinPSWAgain">Has to match psw above</string>
     
 </resources>

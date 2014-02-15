@@ -13,16 +13,16 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/userPassword"
+        android:layout_alignRight="@+id/ET_createPSW"
         android:layout_centerVertical="true"
         android:text="@string/action_sign_in_short" />
 
     <EditText
-        android:id="@+id/userPassword"
+        android:id="@+id/ET_createPSW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/loginRequest"
-        android:layout_alignLeft="@+id/userNameInput"
+        android:layout_alignLeft="@+id/ET_createUsername"
         android:ems="10"
         android:hint="@string/prompt_password"
         android:inputType="textPassword" >
@@ -31,10 +31,10 @@
     </EditText>
 
     <EditText
-        android:id="@+id/userNameInput"
+        android:id="@+id/ET_createUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/userPassword"
+        android:layout_above="@+id/ET_createPSW"
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:hint="@string/prompt_userName"
@@ -44,8 +44,8 @@
         android:id="@+id/error_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/userNameInput"
-        android:layout_alignLeft="@+id/userNameInput"
+        android:layout_above="@+id/ET_createUsername"
+        android:layout_alignLeft="@+id/ET_createUsername"
         android:layout_marginBottom="14dp"
         android:text="@string/error_message" />
 

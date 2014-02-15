@@ -36,11 +36,16 @@ public class LoginPage extends Activity {
 		
 		errorMSG.setVisibility(View.INVISIBLE);
 		
+		System.out.println(list.contains("admin", "pass123"));
+		System.out.println(list.contains("a","a"));
+		list.printAll();
+		
 		loginButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				mName = ((EditText)findViewById(R.id.userNameInput)).getText().toString();
-				mPassword = ((EditText)findViewById(R.id.userPassword)).getText().toString();
-		    	if(list.contains(mName, mPassword)){
+				mName = ((EditText)findViewById(R.id.ET_createUsername)).getText().toString();
+				mPassword = ((EditText)findViewById(R.id.ET_createPSW)).getText().toString();
+		    	if((list.buffer()).contains(mName, mPassword)){
+
 		    		Intent loadLoginPage = new Intent(LoginPage.this, AccountManagePage.class);
 		    		startActivity(loadLoginPage);
 		    	} else {

@@ -42,5 +42,9 @@ public abstract class User {
 		}
 		return false;
 	}
+	
+	public void print(){
+		System.out.println(userName+ "   " + userPSW);
+	}
 
 }

@@ -120,8 +120,14 @@ public class FullscreenActivity extends Activity {
         //------------implement part ---------------------------------------
         
         //setting RegistrationButton
-        findViewById(R.id.registrationButton).setOnTouchListener(mDelayHideTouchListener);
-        
+        Button registerButton = (Button)findViewById(R.id.registrationButton);
+        registerButton.setOnTouchListener(mDelayHideTouchListener);
+        registerButton.setOnClickListener(new OnClickListener() {
+        	public void onClick(View v) {
+        		Intent loadRegisterPage = new Intent(FullscreenActivity.this, Register_Page.class);
+        		startActivity(loadRegisterPage);
+        	}
+        });
         
         //setting LoginButton -- on Feb 2nd
         Button loginButton = (Button) findViewById(R.id.loginButton);
@@ -133,6 +139,9 @@ public class FullscreenActivity extends Activity {
         		startActivity(loadLoginPage);
         	}
         });
+        
+        
+        
         
         //------------end of implement part ---------------------------------
     }
