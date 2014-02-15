@@ -2,6 +2,7 @@ package com.example.modroid_app;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -9,24 +10,22 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.app.AlertDialog.Builder;
 
 public class Register_Page extends Activity {
 	
-	private UserList list;
 	private Button submit;
-
+	private Button cancel;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register__page);
 		
 		submit = (Button)findViewById(R.id.BTN_submit);
-		list = new UserList();
+		cancel = (Button)findViewById(R.id.BTN_cancel);
+
 		
-		//EditText createPSW = (EditText)findViewById(R.id.ET_createPSW);
-		//EditText secondPSW = (EditText)findViewById(R.id.ET_typeinPSWAgain);
-		
-		((EditText)findViewById(R.id.ET_typeinPSWAgain)).addTextChangedListener(new TextWatcher() {
+/*		((EditText)findViewById(R.id.ET_typeinPSWAgain)).addTextChangedListener(new TextWatcher() {
 			public void afterTextChanged(Editable e) {
 				String firstPSW = ((EditText)findViewById(R.id.ET_createPSW)).getText().toString();
 				String secondPSW = ((EditText)findViewById(R.id.ET_typeinPSWAgain)).getText().toString();
@@ -48,34 +47,45 @@ public class Register_Page extends Activity {
 				// TODO Auto-generated method stub
 				
 			}
-		});
+		});*/
+		
+		cancel.setOnClickListener(new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+					finish();
+		}
+	});
 		
 		submit.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				String name = ((EditText)findViewById(R.id.ET_createUsername)).getText().toString();
 				String firstPSW = ((EditText)findViewById(R.id.ET_createPSW)).getText().toString();
 				String secondPSW = ((EditText)findViewById(R.id.ET_typeinPSWAgain)).getText().toString();
 				String emailAddress = ((EditText)findViewById(R.id.ET_emailAddress)).getText().toString();
-				if(name != null && firstPSW != null
-						&& secondPSW != null && emailAddress != null) {
-					if(secondPSW.equals(firstPSW)) {
-						
-						list.addNewUser(name, firstPSW);
-						System.out.println(name+"   "+firstPSW);
-						list.printAll();
-						finish();
-					}
-				} else {
+				
+				if ( name.equals("") || firstPSW.equals("")
+						|| secondPSW.equals("") || emailAddress.equals("")) {
 					
+					new AlertDialog.Builder(Register_Page.this)
+				    .setTitle("Error")  
+				    .setPositiveButton("OK", null)  
+				    .setMessage("Invalid infomation. Please check your information and try again!")  
+				    .show(); 
+				} else {					
+					if(secondPSW.equals(firstPSW)) {
+						UserList.addNewUser(new UserAccount(name, firstPSW));
+						finish();
+					} else {
+						new AlertDialog.Builder(Register_Page.this)
+					    .setTitle("Error")  
+					    .setPositiveButton("OK", null)  
+					    .setMessage("The passwords you typed in do not match")  
+					    .show();
+					}
 				}
 			}
-			
 		});
-		
-		
-		
 		
 	}
 

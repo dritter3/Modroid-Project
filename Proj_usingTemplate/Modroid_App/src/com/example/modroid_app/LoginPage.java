@@ -23,7 +23,7 @@ public class LoginPage extends Activity {
 	private Button loginButton;
 	private TextView errorMSG;
 	
-	private UserList list;
+	//private UserList list;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,19 +32,14 @@ public class LoginPage extends Activity {
 		
 		loginButton = (Button) findViewById(R.id.loginRequest);
 		errorMSG = (TextView) findViewById(R.id.error_msg);
-		list = new UserList();
 		
 		errorMSG.setVisibility(View.INVISIBLE);
-		
-		System.out.println(list.contains("admin", "pass123"));
-		System.out.println(list.contains("a","a"));
-		list.printAll();
 		
 		loginButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				mName = ((EditText)findViewById(R.id.ET_createUsername)).getText().toString();
 				mPassword = ((EditText)findViewById(R.id.ET_createPSW)).getText().toString();
-		    	if((list.buffer()).contains(mName, mPassword)){
+		    	if(UserList.contains(mName, mPassword)){
 
 		    		Intent loadLoginPage = new Intent(LoginPage.this, AccountManagePage.class);
 		    		startActivity(loadLoginPage);

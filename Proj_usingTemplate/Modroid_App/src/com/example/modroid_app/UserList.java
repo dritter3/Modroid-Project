@@ -3,23 +3,24 @@ import java.util.*;
 
 public class UserList {
 
-	private static ArrayList<User> list;
+	private static ArrayList<User> list = new ArrayList<User>();
+	private static AdminAccount admin = new AdminAccount();
 	
 	public UserList() {
-		list = new ArrayList();
-		list.add(new AdminAccount());
+		if(list.isEmpty()) {
+			list.add(admin);
+		}
 	}
 	
-	
-	public boolean contains(String name, String psw) {
+	public static boolean contains(String name, String psw) {
 		return list.contains(new UserAccount(name, psw));
 	}
 	
-	public boolean addNewUser(String name, String PSW) {
-		return list.add(new UserAccount(name, PSW));
+	public static boolean addNewUser(User toAdd) {
+		return list.add(toAdd);
 	}
 	
-	public void printAll(){
+	public static void printAll(){
 		for(User u: list) {
 			u.print();
 		}
