@@ -2,5 +2,8 @@
 <resources>
     <string name="create_username">create username</string>
     <string name="hint_typeinPSWAgain">Has to match psw above</string>
+    <string name="notMatchWarning">This is not the same as psw above</string>
+    <string name="duplicateNameWarning">This account name is already existed</string>
+    <string name="emailAddressFormatWarning">It is not a valid email address format</string>
     
 </resources>

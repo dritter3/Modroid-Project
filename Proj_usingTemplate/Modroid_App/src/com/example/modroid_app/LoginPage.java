@@ -35,11 +35,13 @@ public class LoginPage extends Activity {
 		
 		errorMSG.setVisibility(View.INVISIBLE);
 		
+		//UserList.printAll();
+		
 		loginButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				mName = ((EditText)findViewById(R.id.ET_createUsername)).getText().toString();
 				mPassword = ((EditText)findViewById(R.id.ET_createPSW)).getText().toString();
-		    	if(UserList.contains(mName, mPassword)){
+		    	if(UserList.verifyAccount(mName, mPassword)){
 
 		    		Intent loadLoginPage = new Intent(LoginPage.this, AccountManagePage.class);
 		    		startActivity(loadLoginPage);
