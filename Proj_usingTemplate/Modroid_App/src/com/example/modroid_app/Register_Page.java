@@ -1,7 +1,9 @@
 package com.example.modroid_app;
 
 import java.util.regex.Matcher;
+
 import java.util.regex.Pattern;
+import java.lang.CharSequence;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -15,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 
 public class Register_Page extends Activity {
 	
@@ -128,20 +131,23 @@ public class Register_Page extends Activity {
 				if ( name.equals("") || firstPSW.equals("")
 						|| secondPSW.equals("") || emailAddress.equals("")) {
 					
-					new AlertDialog.Builder(Register_Page.this)
-				    .setTitle("Error")  
-				    .setPositiveButton("OK", null)  
-				    .setMessage("Invalid infomation. Please check your information and try again!")  
-				    .show(); 
+					AlertDialog.Builder builder= new AlertDialog.Builder(Register_Page.this);
+					builder.setTitle("Error");
+				    builder.setPositiveButton("OK", null);
+				    builder.setMessage("Invalid infomation. Please check your information and try again!");  
+				    builder.show(); 
 				} else {
 					if(secondPSW.equals(firstPSW)) {
 						if(UserList.addNewUser(new UserAccount(name, firstPSW))){
-							new AlertDialog.Builder(Register_Page.this)
-						    .setTitle("Error")  
-						    .setPositiveButton("OK", null)  
-						    .setMessage("Account has been successfully created.")  
-						    .show();
-							finish();
+							AlertDialog.Builder builder= new AlertDialog.Builder(Register_Page.this);
+							builder.setTitle("Error");
+						    builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+								public void onClick(DialogInterface dialog, int which){
+									finish();
+								}
+						    });
+						    builder.setMessage("Account has been successfully created.");
+						    builder.show();
 							
 						} else {
 							new AlertDialog.Builder(Register_Page.this)
