@@ -12,5 +12,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_account_manage_page">AccountManagePage</string>
     <string name="title_activity_register__page">Register_Page</string>
+    <string name="managePage_addAccount">Add New Account</string>
+    <string name="managePage_accountList">Account List</string>
+    <string name="title_activity_add_bank_account">AddBankAccount</string>
+    <string name="managePage_curTime">Current Time</string>
+    <string name="title_activity_admin_manage">AdminManage</string>
 
 </resources>

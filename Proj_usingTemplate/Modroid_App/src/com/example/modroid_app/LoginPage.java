@@ -22,6 +22,7 @@ public class LoginPage extends Activity {
 	
 	private Button loginButton;
 	private TextView errorMSG;
+	private int userIDX;
 	
 	//private UserList list;
 	
@@ -41,10 +42,17 @@ public class LoginPage extends Activity {
 			public void onClick(View v) {
 				mName = ((EditText)findViewById(R.id.ET_createUsername)).getText().toString();
 				mPassword = ((EditText)findViewById(R.id.ET_createPSW)).getText().toString();
-		    	if(UserList.verifyAccount(mName, mPassword)){
-
-		    		Intent loadLoginPage = new Intent(LoginPage.this, AccountManagePage.class);
-		    		startActivity(loadLoginPage);
+				userIDX = UserList.findUserName(mName);
+		    	if(UserList.verifyAccount(mName, mPassword)&&userIDX >= 0){
+		    		
+		    		if(!mName.equals("admin")){
+		    			Intent loadLoginPage = new Intent(LoginPage.this, AccountManagePage.class);
+		    			loadLoginPage.putExtra("UserIDX", userIDX);
+		    			startActivity(loadLoginPage);
+		    		} else {
+		    			Intent loadAdminPage = new Intent(LoginPage.this, AdminManage.class);
+		    			startActivity(loadAdminPage);
+		    		}
 		    	} else {
 		    			errorMSG.setVisibility(View.VISIBLE);
 		    		}

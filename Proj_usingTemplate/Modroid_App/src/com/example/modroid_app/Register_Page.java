@@ -45,7 +45,7 @@ public class Register_Page extends Activity {
 			@Override
 			public void afterTextChanged(Editable e) {
 				String accountName = ((EditText)findViewById(R.id.ET_createUsername)).getText().toString();
-				if(UserList.findUserName(accountName)) {
+				if(UserList.findUserName(accountName)>0) {
 					dupWarning.setVisibility(View.VISIBLE);
 				} else {
 					dupWarning.setVisibility(View.INVISIBLE);

@@ -21,7 +21,7 @@ public class UserList {
 	}
 	
 	public static boolean addNewUser(User toAdd) {
-		if(toAdd == null || findUserName(toAdd.getName())) {
+		if(toAdd == null || (findUserName(toAdd.getName())>=0) ) {
 			return false;
 		}
 		return list.add(toAdd);
@@ -32,14 +32,23 @@ public class UserList {
 			u.print();
 		}
 	}
+	/*
+	public static boolean addAccount(int idx, BankAccount account){
+		UserAccount u= (UserAccount)getUserByIDX(idx);
+		return ((UserAccount)getUserByIDX(idx)).addAccount(account);
+	}*/
 	
-	public static boolean findUserName(String name){
+	public static User getUserByIDX(int idx){
+		return list.get(idx);
+	}
+	
+	public static int findUserName(String name){
 		for(User u: list) {
 			if (u.getName().equals(name)){
-				return true;
+				return list.indexOf(u);
 			}
 		}
-		return false;
+		return -1;
 	}
 
 }

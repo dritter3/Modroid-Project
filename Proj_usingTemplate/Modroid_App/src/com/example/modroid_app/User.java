@@ -1,10 +1,11 @@
 package com.example.modroid_app;
 
+import java.util.ArrayList;
+
 public abstract class User {
 
 	protected String userName;
 	protected String userPSW;
-	protected int userID;
 	
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -29,6 +30,8 @@ public abstract class User {
 	public String getPSW(){
 		return userPSW;
 	}
+	
+
 
 	public boolean equals(Object toCompare){
 		if(toCompare == null){

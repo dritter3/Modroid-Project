@@ -36,6 +36,14 @@
             android:name="com.example.modroid_app.Register_Page"
             android:label="@string/title_activity_register__page" >
         </activity>
+        <activity
+            android:name="com.example.modroid_app.AddBankAccount"
+            android:label="@string/title_activity_add_bank_account" >
+        </activity>
+        <activity
+            android:name="com.example.modroid_app.AdminManage"
+            android:label="@string/title_activity_admin_manage" >
+        </activity>
     </application>
 
 </manifest>
