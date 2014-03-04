@@ -16,14 +16,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.app.AlertDialog.Builder;
 
+import android.content.ContentValues;
+
+import android.database.sqlite.*;
+import android.database.sqlite.TableContract.FeedEntry;
+
 public class Register_Page extends Activity {
 	
 	private Button submit;
 	private Button cancel;
 
+	private DatabaseHandler db = new DatabaseHandler(this);
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register__page);
+		
+		
 		
 		submit = (Button)findViewById(R.id.BTN_submit);
 		cancel = (Button)findViewById(R.id.BTN_cancel);
@@ -42,11 +51,15 @@ public class Register_Page extends Activity {
 			@Override
 			public void afterTextChanged(Editable e) {
 				String accountName = ((EditText)findViewById(R.id.ET_createUsername)).getText().toString();
+				
+				// CHECK THIS PART
+				
+				/*
 				if(UserList.findUserName(accountName)) {
 					dupWarning.setVisibility(View.VISIBLE);
 				} else {
 					dupWarning.setVisibility(View.INVISIBLE);
-				}
+				}*/
 			}
 			@Override
 			public void beforeTextChanged(CharSequence arg0, int arg1,
@@ -135,7 +148,18 @@ public class Register_Page extends Activity {
 				    .show(); 
 				} else {
 					if(secondPSW.equals(firstPSW)) {
-						if(UserList.addNewUser(new UserAccount(name, firstPSW))){
+
+
+						
+						User checkDuplicate = db.getUserInfo(name);
+						User newUser = new User(name, firstPSW, emailAddress);
+						
+						// check if the userName already exists
+						if(checkDuplicate == null && !newUser.equals(checkDuplicate)){ 
+							
+							db.addUser(newUser);
+							
+						
 							new AlertDialog.Builder(Register_Page.this)
 						    .setTitle("Error")  
 						    .setPositiveButton("OK", null)  

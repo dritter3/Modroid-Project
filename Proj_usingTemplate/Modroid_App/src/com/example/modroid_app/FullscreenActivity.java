@@ -48,7 +48,6 @@ public class FullscreenActivity extends Activity {
      */
     private SystemUiHider mSystemUiHider;
     
-    private UserList list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +58,6 @@ public class FullscreenActivity extends Activity {
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
 
-        list = new UserList();
         
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
