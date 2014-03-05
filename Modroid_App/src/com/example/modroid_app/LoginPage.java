@@ -54,7 +54,8 @@ public class LoginPage extends Activity {
 				User checkDuplicate = db.getUserInfo(mName);
 				
 				// check user's id & password
-				if(db.checkDuplicateUser(AdminAccount.user)) {
+				if(db.checkDuplicateUser(AdminAccount.user) && AdminAccount.user.getName().equals(mName) &&
+						AdminAccount.user.getPSW().equals(mPassword)) {
 					Intent adminPage = new Intent(LoginPage.this, UserAccountManage.class);
 					startActivity(adminPage);
 				} else if(checkDuplicate != null &&
