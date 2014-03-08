@@ -17,5 +17,6 @@
     <string name="title_activity_add_bank_account">AddBankAccount</string>
     <string name="managePage_curTime">Current Time</string>
     <string name="title_activity_admin_manage">AdminManage</string>
+    <string name="title_activity_add_transaction">AddTransaction</string>
 
 </resources>

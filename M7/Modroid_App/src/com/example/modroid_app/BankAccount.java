@@ -1,5 +1,7 @@
 package com.example.modroid_app;
 
+import java.util.ArrayList;
+
 public class BankAccount {
 
 	protected int accountNumber;
@@ -7,17 +9,17 @@ public class BankAccount {
 	protected String billAddress;
 	protected String holderName;
 	protected String alias;
-	
-	public BankAccount() {
-		
-	}
-	
+	protected ArrayList<Transaction> transactions;
+	protected double balance;
+
 	public BankAccount(int accountNumber, int verificationCode, String billAddress, String holderName, String alias) {
 		this.accountNumber = accountNumber;
 		this.verificationCode = verificationCode;
 		this.billAddress = billAddress;
 		this.holderName = holderName;
 		this.alias = (alias.equals("") ? "NULL" : alias);
+		transactions = new ArrayList<Transaction>();
+		balance = 0;
 	}
 	
 	public String getAlias(){
@@ -27,5 +29,24 @@ public class BankAccount {
 	public int getAccountNumber(){
 		return accountNumber;
 	}
-
+	
+	public void addTransaction(Transaction t){
+		transactions.add(t);
+		balance += t.getAmount();
+	}
+	
+	public void deleteTransaction(Transaction t){
+		transactions.remove(t);
+		balance -= t.getAmount();
+	}
+	
+	public Transaction getTransaction(Transaction t){
+		return ( transactions.contains(t) ? transactions.get(transactions.indexOf(t)): null);
+	}
+	
+	public String toString(){
+		return Integer.toString(accountNumber);
+	}
+	
+	
 }

@@ -44,6 +44,10 @@
             android:name="com.example.modroid_app.AdminManage"
             android:label="@string/title_activity_admin_manage" >
         </activity>
+        <activity
+            android:name="com.example.modroid_app.AddTransaction"
+            android:label="@string/title_activity_add_transaction" >
+        </activity>
     </application>
 
 </manifest>

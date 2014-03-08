@@ -21,11 +21,16 @@ public class AddBankAccount extends Activity {
 
 	private Button cancel;
 	private Button add;
+	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_bank_account);
 		
+		
+		/*
 		AlertDialog.Builder builder= new AlertDialog.Builder(AddBankAccount.this);
 		builder.setTitle("User Agreement");
 	    builder.setPositiveButton("accept", null);
@@ -35,7 +40,7 @@ public class AddBankAccount extends Activity {
 			}
 	    });
 	    builder.setMessage("You are adding a new account, click accept to continue, or reject to go back.");
-	    builder.show();
+	    builder.show();*/
 		
 
 		final int userIDX = (this.getIntent()).getIntExtra("user", 0);

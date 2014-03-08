@@ -24,6 +24,17 @@ public class UserAccount extends User {
 		return true;
 	}
 	
+	public boolean deleteAccount(BankAccount ba){
+		if(accounts.remove(ba)){
+			size--;
+			return true;
+		}
+		return false;
+	}
+	
+	public BankAccount getAccount(BankAccount ba){
+		return accounts.get(accounts.indexOf(ba));
+	}
 	private boolean isFull(){
 		return size > 19;
 	}
@@ -31,7 +42,7 @@ public class UserAccount extends User {
 		return accounts.isEmpty();
 	}
 	
-	public ArrayList<BankAccount> getAccounts(){
+	public ArrayList<BankAccount> getAccountList(){
 		return accounts;
 	}
 	

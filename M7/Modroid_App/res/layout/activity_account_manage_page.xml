@@ -45,6 +45,15 @@
             android:layout_height="wrap_content"
             android:text="@string/managePage_accountList" />
 
+        <ListView
+            android:id="@+id/LV_accountList"
+            android:layout_width="202dp"
+            android:layout_height="321dp"
+            android:background="@color/black_overlay"
+            android:choiceMode="singleChoice" >
+
+        </ListView>
+
         <LinearLayout
             android:id="@+id/LL_list"
             android:layout_width="match_parent"
