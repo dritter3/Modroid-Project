@@ -35,6 +35,13 @@ public class UserAccount extends User {
 	public BankAccount getAccount(BankAccount ba){
 		return accounts.get(accounts.indexOf(ba));
 	}
+	
+	
+	public BankAccount getAccountByOrder(int a) {
+		return accounts.get(a);
+	}
+	
+	
 	private boolean isFull(){
 		return size > 19;
 	}

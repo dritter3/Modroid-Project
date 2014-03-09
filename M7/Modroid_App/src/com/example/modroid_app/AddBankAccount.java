@@ -49,10 +49,6 @@ public class AddBankAccount extends Activity {
 		add = (Button)findViewById(R.id.BTN_AddingAccount);
 		cancel = (Button)findViewById(R.id.BTN_CancelAdding);
 
-
-	
-		
-		
 		//---cancel BTN
 		cancel.setOnClickListener(new OnClickListener() {
 		@Override

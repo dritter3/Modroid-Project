@@ -26,18 +26,26 @@ public class BankAccount {
 		return alias;
 	}
 	
+	public Transaction getLastTransaction() {
+		return transactions.get(transactions.size()-1);
+	}
+	
+	public boolean isEmpty() {
+		return transactions.isEmpty();
+	}
+	
 	public int getAccountNumber(){
 		return accountNumber;
 	}
 	
 	public void addTransaction(Transaction t){
 		transactions.add(t);
-		balance += t.getAmount();
+		balance += t.getbalance();
 	}
 	
 	public void deleteTransaction(Transaction t){
 		transactions.remove(t);
-		balance -= t.getAmount();
+		balance -= t.getbalance();
 	}
 	
 	public Transaction getTransaction(Transaction t){

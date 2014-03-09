@@ -48,6 +48,18 @@
             android:name="com.example.modroid_app.AddTransaction"
             android:label="@string/title_activity_add_transaction" >
         </activity>
+        <activity
+            android:name="com.example.modroid_app.BankAccountList"
+            android:label="@string/title_activity_bank_account_list" >
+        </activity>
+        <activity
+            android:name="com.example.modroid_app.ListItemDetail"
+            android:label="@string/title_activity_list_item_detail" >
+        </activity>
+        <activity
+            android:name="com.example.modroid_app.TransactionPage"
+            android:label="@string/title_activity_transaction_page" >
+        </activity>
     </application>
 
 </manifest>

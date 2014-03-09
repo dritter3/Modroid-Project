@@ -7,10 +7,15 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -18,13 +23,14 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-public class AccountManagePage extends Activity {
+public class AccountManagePage extends Activity implements OnItemClickListener {
 
 	
 	//private UserAccount holder;
 	private int userIDX;
 	private UserAccount holder;
 	private ListView accountList;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +40,24 @@ public class AccountManagePage extends Activity {
 		userIDX = (this.getIntent()).getIntExtra("UserIDX", 0);
 		holder = (UserAccount) UserList.getUserByIDX(userIDX);
 		
+		Button bankList = (Button)findViewById(R.id.BTN_BankList);
 		
+		bankList.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v){
+				Intent intent = new Intent(AccountManagePage.this, TransactionPage.class);
+				
+				startActivity(intent);
+			}
+		});
+		ListView listview = (ListView) findViewById(R.id.LV_accountList);
+        listview.setOnItemClickListener(this);
+		
+		/*
 		TextView accountInfo = (TextView)findViewById(R.id.TV_holderName);
 		accountInfo.setText("Welcome " + holder.getName());
 		
-		this.setList();
-		
-		
+		this.setList();*/
+
 		/*
 		ArrayList<HashMap<String, BankAccount>> map = new ArrayList<HashMap<String, BankAccount>>();
 		
@@ -83,6 +100,20 @@ public class AccountManagePage extends Activity {
 		return true;
 	}
 	
+	
+   public void onItemClick(AdapterView<?> l, View v, int position, long id) {
+        Log.i("HelloListView", "You clicked Item: " + id + " at position:" + position);
+            // Then you start a new Activity via Intent
+            Intent intent = new Intent();
+            intent.setClass(this, TransactionPage.class);
+            intent.putExtra("position", position);
+            intent.putExtra("user", userIDX);
+            // Or / And
+            intent.putExtra("id", id);
+            startActivity(intent);
+    }
+	
+	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data){
 		super.onActivityResult(requestCode, resultCode, data);
@@ -105,6 +136,11 @@ public class AccountManagePage extends Activity {
 		ArrayAdapter<String> adp = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
 		accountList.setAdapter(adp);
 	}
+	
+	/*void onListItemClick(ListView l, View v, int position, long id) {
+	    String item = (String) getListAdapter().getItem(position);
+	    Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
+	  }*/
 	
 
 }
