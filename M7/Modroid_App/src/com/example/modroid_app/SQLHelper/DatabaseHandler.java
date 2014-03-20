@@ -365,10 +365,25 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		return list;
 	}
 	
+	public double getBankBalance(int bankId) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		double result = 0;
+		String qu = "SELECT * FROM " + FeedEntry.TABLE_NAME_Bank + 
+				" WHERE " + FeedEntry.COLUMN_Bank_Number + " = " + bankId;
+		Cursor c = db.rawQuery(qu,null);
+		if(c.moveToFirst()) {
+			do{
+				result = c.getDouble(0);
+			} while(c.moveToNext());
+		}
+		return result;
+	}
+	
 	/**
 	 * check duplicate userName
 	 * @return
 	 */
+
 	public boolean checkDuplicateName(String aName) { // check what the hell is this for
 		User user1 = getUserInfo(aName);
 		if (user1 == null) { 

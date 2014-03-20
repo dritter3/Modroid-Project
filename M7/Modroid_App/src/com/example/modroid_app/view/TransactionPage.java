@@ -1,12 +1,14 @@
 package com.example.modroid_app.view;
 
 import com.example.modroid_app.R;
+import com.example.modroid_app.SQLHelper.DatabaseHandler;
 import com.example.modroid_app.model.BankAccount;
 import com.example.modroid_app.model.Transaction;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -16,11 +18,12 @@ import android.view.View.OnClickListener;
 
 public class TransactionPage extends Activity {
 	
-	private double acccountNumber;
 	private EditText amount;
-	private TextView bal;
+	private TextView balTextview;
 	private BankAccount bank;
 	private Transaction trans;
+	private int bankAccountNumber;
+	private DatabaseHandler db = new DatabaseHandler(this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,16 +32,16 @@ public class TransactionPage extends Activity {
 		Intent intent = getIntent();
 		
 		int position = intent.getIntExtra("position", 0);
-	/*	User user = UserList.getUserByIDX(intent.getIntExtra("user", 0));
-		UserAccount userAcc = (UserAccount) user;
-		bank = userAcc.getAccountByOrder(position);
 		
-		if(bank.isEmpty()) {
-			bank.addTransaction(new Transaction(0));
+		bankAccountNumber = intent.getIntExtra("bankAccountNumber", 0);
+		
+		//BankAccountNumber shoulnd't be 0
+		if(bankAccountNumber == 0) {
+			Log.d("TransactionPage","NoBankAccount!");
 		}
 		
-		bal = (TextView)findViewById(R.id.TV_ShowBalance);
-		bal.setText(Double.toString(bank.getLastTransaction().getbalance()));
+		balTextview = (TextView)findViewById(R.id.TV_ShowBalance);
+		balTextview.setText(Double.toString(db.getBankBalance(bankAccountNumber)));
 		
 		amount = (EditText)findViewById(R.id.ET_Amount);
 		
@@ -48,12 +51,12 @@ public class TransactionPage extends Activity {
 		deposit.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				double a = Double.parseDouble(amount.getText().toString());
-				String currBalS = (String) bal.getText();
+				String currBalS = (String) balTextview.getText();
 				double currBal = Double.parseDouble(currBalS);
 				Transaction newTrans = new Transaction(currBal);
 				newTrans.makeTrans(a);
 				//bank.addTransaction(newTrans);
-				bal.setText(Double.toString(currBal + a));
+				balTextview.setText(Double.toString(currBal + a));
 				
 			}
 		});
@@ -62,16 +65,16 @@ public class TransactionPage extends Activity {
 		withdraw.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				double a = Double.parseDouble(amount.getText().toString());
-				String currBalS = (String) bal.getText();
+				String currBalS = (String) balTextview.getText();
 				double currBal = Double.parseDouble(currBalS);
 				Transaction newTrans = new Transaction(currBal);
 				if(currBal >= a) {
 					newTrans.makeTrans(-a);
-					bank.addTransaction(newTrans);
-					bal.setText(Double.toString(currBal - a));
+					db.addTransaction(newTrans, bankAccountNumber);
+					balTextview.setText(Double.toString(currBal - a));
 				}
 			}
-		});*/
+		});
 	}
 
 	@Override

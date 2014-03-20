@@ -96,9 +96,11 @@ public class AccountManagePage extends Activity implements OnItemClickListener {
             intent.putExtra("position", position);
             intent.putExtra("user", userID);
             //Cursor c = (Cursor) parent.getItemAtPosition(position); // check here again
+            int bankAccountNumber = Integer.parseInt((String)parent.getItemAtPosition(position));
             //System.out.println("Get Position: " + c.getString(0));
+            Log.d("Click Item", String.valueOf(bankAccountNumber));
             // the row id of item that's clicked
-            intent.putExtra("id", id);
+            intent.putExtra("bankAccountNumber", bankAccountNumber);
             startActivity(intent);
     }
 	
