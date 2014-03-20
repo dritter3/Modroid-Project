@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.modroid_app.FullscreenActivity"
+            android:name="com.example.modroid_app.view.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:theme="@style/FullscreenTheme" >
@@ -25,40 +25,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.modroid_app.LoginPage"
+            android:name="com.example.modroid_app.view.LoginPage"
             android:label="@string/title_activity_login_page" >
         </activity>
         <activity
-            android:name="com.example.modroid_app.AccountManagePage"
+            android:name="com.example.modroid_app.view.AccountManagePage"
             android:label="@string/title_activity_account_manage_page" >
         </activity>
         <activity
-            android:name="com.example.modroid_app.Register_Page"
+            android:name="com.example.modroid_app.view.Register_Page"
             android:label="@string/title_activity_register__page" >
         </activity>
         <activity
-            android:name="com.example.modroid_app.AddBankAccount"
+            android:name="com.example.modroid_app.view.AddBankAccount"
             android:label="@string/title_activity_add_bank_account" >
         </activity>
         <activity
-            android:name="com.example.modroid_app.AdminManage"
-            android:label="@string/title_activity_admin_manage" >
-        </activity>
-        <activity
-            android:name="com.example.modroid_app.AddTransaction"
+            android:name="com.example.modroid_app.view.AddTransaction"
             android:label="@string/title_activity_add_transaction" >
         </activity>
         <activity
-            android:name="com.example.modroid_app.BankAccountList"
-            android:label="@string/title_activity_bank_account_list" >
-        </activity>
-        <activity
-            android:name="com.example.modroid_app.ListItemDetail"
-            android:label="@string/title_activity_list_item_detail" >
-        </activity>
-        <activity
-            android:name="com.example.modroid_app.TransactionPage"
+            android:name="com.example.modroid_app.view.TransactionPage"
             android:label="@string/title_activity_transaction_page" >
+        </activity>
+                <activity
+            android:name="com.example.modroid_app.view.UserAccountManageView"
+            android:label="@string/title_activity_user_account_manage">
         </activity>
     </application>
 
