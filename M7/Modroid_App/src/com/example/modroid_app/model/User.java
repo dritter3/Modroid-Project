@@ -41,9 +41,9 @@ public class User {
 		if(this == o) return true;
 		
 		if(o instanceof User){
-			if(((User)o).getName().equals(userName)
-					&& ((User)o).getPSW().equals(userPSW)
-			&& (((User)o).getEmail().equals(eMail)) || ((User)o).getEmail() == eMail){
+			if(userName.equals(((User)o).getName())
+					&& (userPSW.equals(((User)o).getPSW()))
+			){
 				return true;				
 			}
 		}

@@ -22,8 +22,8 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 			"CREATE TABLE " + FeedEntry.TABLE_NAME_User + " (" +
 			FeedEntry._ID + " INTEGER PRIMARY KEY," +
 					FeedEntry.COLUMN_User_NAME + TEXT_TYPE + COMMA_SEP +
-					FeedEntry.COLUMN_User_PASSWORD + TEXT_TYPE +
-					FeedEntry.COLUMN_User_MAIL + TEXT_TYPE + COMMA_SEP +
+					FeedEntry.COLUMN_User_PASSWORD + TEXT_TYPE + COMMA_SEP +
+					FeedEntry.COLUMN_User_MAIL + TEXT_TYPE +
 					 " )";
 	// previous one
 	/*private static final String SQL_CREATE_Bank_ENTRIES = 
@@ -281,11 +281,13 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		User user = new User();
 		if(c != null) {
 			if(c.moveToFirst()){
-				c.moveToFirst();
+				//c.moveToFirst();
+				do{
 			user.setName(c.getString(0));
 			user.setPassword(c.getString(1));
 			user.setEmail(c.getString(2));
-		}}
+		}while(c.moveToNext());
+				}}
 		Log.d("getting user's info: ", user.toString());
 		if(user.getName() == null) {
 			return null;
@@ -373,7 +375,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		Cursor c = db.rawQuery(qu,null);
 		if(c.moveToFirst()) {
 			do{
-				result = c.getDouble(0);
+				result = c.getDouble(3);
 			} while(c.moveToNext());
 		}
 		return result;
@@ -399,7 +401,6 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		Log.d("Collecting this user's info : ", user.toString());
 		Log.d("the user's name : ", user.getName());
 		User user1 = getUserInfo(user.getName());
-		user1.print();
 		if (user.equals(user1)) {
 			Log.d("checkDuplicateUser : ", "true");
 			return true;
