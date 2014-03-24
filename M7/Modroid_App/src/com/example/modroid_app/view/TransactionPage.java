@@ -56,6 +56,7 @@ public class TransactionPage extends Activity {
 				Transaction newTrans = new Transaction(currBal);
 				newTrans.makeTrans(a);
 				//bank.addTransaction(newTrans);
+				db.addTransaction(newTrans, bankAccountNumber);
 				balTextview.setText(Double.toString(currBal + a));
 				
 			}

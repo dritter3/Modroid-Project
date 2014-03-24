@@ -1,4 +1,5 @@
 package com.example.modroid_app.SQLHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 					FeedEntry.COLUMN_Trans_Amount + " INTEGER" + COMMA_SEP +
 					FeedEntry.COLUMN_Trans_Comment + TEXT_TYPE +
 					" )";
-					
+					// check if date is Integer or String
 	
 	
 	private static final String SQL_DELETE_User_ENTRIES =
@@ -195,13 +196,11 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		values.put(FeedEntry.COLUMN_Trans_Comment, trans.getComment());
 		
 		long id = db.insert(FeedEntry.TABLE_NAME_Transaction, null, values);
-		Log.d("addTransaction",String.valueOf(trans.getAmount()));
 		updateBankBalance(trans.getBalance(), bankId);
-		
 		return id;
 	}
 	
-	public List<Double> getWidrawls(int bankId){
+	public List<Transaction> getWidrawls(int bankId){
 		SQLiteDatabase db = this.getReadableDatabase();
 		
 		
@@ -209,11 +208,18 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 				 FeedEntry.COLUMN_Trans_Bank_Account + " = " + bankId;
 		Cursor c = db.rawQuery(qu, null);
 		
-		List<Double> list = new ArrayList<Double>();
+		
+		List<Transaction> list = new ArrayList<Transaction>();
+		Transaction trans = new Transaction();
 		if(c.moveToFirst()) {
 			do{
 				if(c.getDouble(4)<0){
-					list.add(c.getDouble(4));
+					trans = new Transaction(c.getDouble(3), c.getInt(1), c.getString(5));
+					//balance, date, comment
+					trans.setBankAccount(c.getInt(2));
+					trans.setAmount(c.getInt(4));
+					
+					list.add(trans);
 					Log.d("getTransactionList", String.valueOf(c.getDouble(1)));
 				}
 			} while(c.moveToNext());
@@ -232,9 +238,24 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		
 		ContentValues values = new ContentValues();
 		values.put(FeedEntry.COLUMN_Bank_Balance, bal);
+		String qu = "UPDATE " + FeedEntry.TABLE_NAME_Bank + " SET " + FeedEntry.COLUMN_Bank_Balance + " = " + bal +
+				" WHERE " + FeedEntry.COLUMN_Bank_Number + " = " + bankId;
 		
-		int count = db.update(FeedEntry.TABLE_NAME_Bank, values,
-				FeedEntry.COLUMN_Bank_Number + " LIKE ?", new String[] {String.valueOf(bankId)});
+		/*String qu = "UPDATE " + FeedEntry.TABLE_NAME_Bank + " SET " + FeedEntry.COLUMN_Bank_Balance + " = " + String.valueOf(bal) +
+				" WHERE " + FeedEntry.COLUMN_Bank_Number + " = ";*/
+		
+		String in = "'"+String.valueOf(bal)+"'";
+		String args[] = {in};
+		Log.d("query",qu);
+		/*int count = db.update(FeedEntry.TABLE_NAME_Bank, values,
+				FeedEntry.COLUMN_Bank_Number + " = '" + bankId + "'", null);*/
+		
+		//Cursor c = db.rawQuery(qu, args);
+		db.execSQL(qu);
+		Log.d("workded this far","4");
+		/*if(c.moveToFirst())
+			System.out.println("oh");
+		c.close();*/
 	}
 	
 	/**
@@ -367,6 +388,32 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 						
 	}
 	
+	public List<Transaction> getTransactionsByDate(int startDate, int endDate) {
+	SQLiteDatabase db = this.getReadableDatabase();
+		
+		
+		String qu = "SELECT * FROM " + FeedEntry.TABLE_NAME_Transaction;
+		Cursor c = db.rawQuery(qu, null);
+		
+		List<Transaction> list = new ArrayList<Transaction>();
+		Transaction newTrans = new Transaction();
+		if(c.moveToFirst()) {
+			do{
+				if(c.getInt(1) >= startDate && c.getInt(1) <= endDate){
+					newTrans.setDate(c.getInt(1));
+					newTrans.setBankAccount(c.getInt(2));
+					newTrans.setBalance(c.getDouble(3));
+					newTrans.setAmount(c.getDouble(4));
+					list.add(newTrans);
+					Log.d("getTransactionList", String.valueOf(c.getDouble(1)));
+				}
+			} while(c.moveToNext());
+		}
+		
+		return list;
+	}
+	
+
 	public List<BankAccount> getBankList() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		List<BankAccount> list = new ArrayList<BankAccount>();
@@ -397,7 +444,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		Cursor c = db.rawQuery(qu,null);
 		if(c.moveToFirst()) {
 			do{
-				result = c.getDouble(3);
+				result = c.getDouble(5);
 			} while(c.moveToNext());
 		}
 		return result;

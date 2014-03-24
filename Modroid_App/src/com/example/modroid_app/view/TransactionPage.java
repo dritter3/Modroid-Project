@@ -1,5 +1,8 @@
 package com.example.modroid_app.view;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import com.example.modroid_app.R;
 import com.example.modroid_app.SQLHelper.DatabaseHandler;
 import com.example.modroid_app.model.BankAccount;
@@ -45,7 +48,10 @@ public class TransactionPage extends Activity {
 		
 		amount = (EditText)findViewById(R.id.ET_Amount);
 		
+		Calendar calendar = Calendar.getInstance();
 		
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+		final String formattedDate = df.format(calendar.getTime());
 		
 		Button deposit = (Button)findViewById(R.id.BTN_Deposit);
 		deposit.setOnClickListener(new OnClickListener() {
@@ -53,10 +59,12 @@ public class TransactionPage extends Activity {
 				double a = Double.parseDouble(amount.getText().toString());
 				String currBalS = (String) balTextview.getText();
 				double currBal = Double.parseDouble(currBalS);
-				Transaction newTrans = new Transaction(currBal);
+				Transaction newTrans = new Transaction(currBal,Integer.parseInt(formattedDate));
 				newTrans.makeTrans(a);
-				//bank.addTransaction(newTrans);
-				balTextview.setText(Double.toString(currBal + a));
+				db.addTransaction(newTrans, bankAccountNumber);
+				//balTextview.setText(Double.toString(currBal + a));
+				
+				balTextview.setText(Double.toString(db.getBankBalance(bankAccountNumber)));
 				
 			}
 		});
@@ -67,11 +75,13 @@ public class TransactionPage extends Activity {
 				double a = Double.parseDouble(amount.getText().toString());
 				String currBalS = (String) balTextview.getText();
 				double currBal = Double.parseDouble(currBalS);
-				Transaction newTrans = new Transaction(currBal);
+				Transaction newTrans = new Transaction(currBal,Integer.parseInt(formattedDate));
 				if(currBal >= a) {
 					newTrans.makeTrans(-a);
 					db.addTransaction(newTrans, bankAccountNumber);
-					balTextview.setText(Double.toString(currBal - a));
+					//balTextview.setText(Double.toString(currBal - a));
+					
+					balTextview.setText(Double.toString(db.getBankBalance(bankAccountNumber)));
 				}
 			}
 		});
