@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.modroid_app.R;
-import com.example.modroid_app.SQLHelper.DatabaseHandler;
+import com.example.modroid_app.database.DatabaseHandler;
 import com.example.modroid_app.model.BankAccount;
 import com.example.modroid_app.model.Transaction;
 import com.example.modroid_app.model.User;
@@ -35,7 +35,7 @@ public class SpendingReportView extends Activity {
 		listView = (ListView)findViewById(R.id.TranslistView);
 		
 		for(int j = 0; j < list.size(); j++){
-			List<Transaction> transList = db.getWidrawls(list.get(j));
+			List<Transaction> transList = db.getWithdrawals(list.get(j));
 			List<Double> amountList = new ArrayList<Double>();
 			for(int i = 0; i < transList.size(); i++) {
 				amountList.add(transList.get(i).getAmount());
@@ -52,7 +52,7 @@ public class SpendingReportView extends Activity {
 		List<Transaction> transList;
 		List<String> withdrawlList = new ArrayList<String>();
 		for(int j = 0; j < list.size(); j++){
-			transList = db.getWidrawls(list.get(j));
+			transList = db.getWithdrawals(list.get(j));
 			for(int i = 0; i< transList.size(); i++) {
 				String a = transList.get(i).getDate() + " // " + transList.get(i).getAmount();
 				withdrawlList.add(a);

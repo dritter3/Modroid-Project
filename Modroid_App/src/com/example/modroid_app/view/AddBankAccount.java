@@ -1,10 +1,10 @@
 package com.example.modroid_app.view;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+//import java.util.regex.Matcher;
+//import java.util.regex.Pattern;
 
 import com.example.modroid_app.R;
-import com.example.modroid_app.SQLHelper.DatabaseHandler;
+import com.example.modroid_app.database.DatabaseHandler;
 import com.example.modroid_app.model.BankAccount;
 
 import android.os.Bundle;
@@ -12,15 +12,17 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+//import android.widget.TextView;
 
+/**
+ * @author Q
+ *
+ */
 public class AddBankAccount extends Activity {
 
 	private Button cancel;
@@ -45,13 +47,12 @@ public class AddBankAccount extends Activity {
 	    });
 	    builder.setMessage("You are adding a new account, click accept to continue, or reject to go back.");
 	    builder.show();*/
-		
+
 		// get user's rowId
 		final int userId = (this.getIntent()).getIntExtra("user", 0);
-		
-		
-		add = (Button)findViewById(R.id.BTN_AddingAccount);
-		cancel = (Button)findViewById(R.id.BTN_CancelAdding);
+
+		add = (Button) findViewById(R.id.BTN_AddingAccount);
+		cancel = (Button) findViewById(R.id.BTN_CancelAdding);
 
 		//---cancel BTN
 		cancel.setOnClickListener(new OnClickListener() {
@@ -123,13 +124,10 @@ public class AddBankAccount extends Activity {
 					} 
 				}
 		});
-		
-		
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.add_bank_account, menu);
 		return true;
 	}

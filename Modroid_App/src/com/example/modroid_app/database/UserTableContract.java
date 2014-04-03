@@ -1,4 +1,4 @@
-package com.example.modroid_app.SQLHelper;
+package com.example.modroid_app.database;
 
 
 import android.provider.BaseColumns;

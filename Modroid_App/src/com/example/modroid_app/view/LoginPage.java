@@ -2,8 +2,8 @@ package com.example.modroid_app.view;
 
 
 import com.example.modroid_app.R;
-import com.example.modroid_app.SQLHelper.DatabaseHandler;
-import com.example.modroid_app.SQLHelper.UserTableContract.FeedEntry;
+import com.example.modroid_app.database.DatabaseHandler;
+import com.example.modroid_app.database.UserTableContract.FeedEntry;
 import com.example.modroid_app.model.User;
 import com.example.modroid_app.model.Admin.AdminAccount;
 
@@ -38,7 +38,7 @@ public class LoginPage extends Activity {
 		setContentView(R.layout.activity_login_page);
 		
 		User checkDuplicate = db.getUserInfo("admin");
-		if(checkDuplicate != null) {
+		if(checkDuplicate == null) {
 			db.addUser("admin", "pass123", null);
 		}
 		

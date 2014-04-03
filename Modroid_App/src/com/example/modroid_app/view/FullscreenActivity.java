@@ -1,7 +1,7 @@
 package com.example.modroid_app.view;
 
 import com.example.modroid_app.R;
-import com.example.modroid_app.SQLHelper.DatabaseHandler;
+import com.example.modroid_app.database.DatabaseHandler;
 import com.example.modroid_app.model.Admin.AdminAccount;
 import com.example.modroid_app.util.SystemUiHider;
 
@@ -57,19 +57,17 @@ public class FullscreenActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        db.removeAll();
 		if(!db.checkDuplicateUser(AdminAccount.user)) {
 			db.addUser(AdminAccount.user);
 			Log.d("Adding new adminAccount: " , AdminAccount.user.toString());
 		}
-		Log.d("Not making new adminAccount","");
 		
         setContentView(R.layout.activity_fullscreen);
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
 
-        
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
         mSystemUiHider = SystemUiHider.getInstance(this, contentView, HIDER_FLAGS);
