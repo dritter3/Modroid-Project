@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.modroid_app.R;
-import com.example.modroid_app.SQLHelper.DatabaseHandler;
+import com.example.modroid_app.database.DatabaseHandler;
 import com.example.modroid_app.model.Transaction;
 
 import android.os.Bundle;
@@ -56,7 +56,7 @@ public class SpendingReportView extends Activity {
         trans = new ArrayList<Transaction>();
         
         for (int j = 0; j < list.size(); j++) {
-            transList = dbHandler.getWidrawls(list.get(j));
+            transList = dbHandler.getWithdrawals(list.get(j));
             for (int i = 0; i < transList.size(); i++) {
                 if (transList.get(i).getDate() <= endDate
                         && transList.get(i).getDate() >= startDate) {

@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.example.modroid_app.R;
-import com.example.modroid_app.SQLHelper.*;
+import com.example.modroid_app.database.*;
 import com.example.modroid_app.model.User;
 
 import android.os.Bundle;

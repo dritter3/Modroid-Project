@@ -344,7 +344,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         final ContentValues values = new ContentValues();
         values.put(FeedEntry.COLUMN_User_NAME, user.getName());
-        values.put(FeedEntry.COLUMN_User_PASSWORD, user.getPSW());
+        values.put(FeedEntry.COLUMN_User_PASSWORD, user.getUserPSW());
         values.put(FeedEntry.COLUMN_User_MAIL, user.getEmail());
 
         database.insert(FeedEntry.TABLE_NAME_User,
@@ -380,7 +380,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 //cur.moveToFirst();
                 do {
                     user.setName(cur.getString(0));
-                    user.setPassword(cur.getString(1));
+                    user.setUserPSW(cur.getString(1));
                     user.setEmail(cur.getString(2));
 
                 } while (cur.moveToNext());
@@ -413,7 +413,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             do {
                 user = new User();
                 user.setName(cur.getString(1));
-                user.setPassword(cur.getString(2));
+                user.setUserPSW(cur.getString(2));
                 user.setEmail(cur.getString(2 + 1));
                 list.add(user);
             } while(cur.moveToNext());

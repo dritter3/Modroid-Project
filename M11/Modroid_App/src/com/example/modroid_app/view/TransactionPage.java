@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import com.example.modroid_app.R;
-import com.example.modroid_app.SQLHelper.DatabaseHandler;
+import com.example.modroid_app.database.DatabaseHandler;
 import com.example.modroid_app.model.BankAccount;
 import com.example.modroid_app.model.Transaction;
 

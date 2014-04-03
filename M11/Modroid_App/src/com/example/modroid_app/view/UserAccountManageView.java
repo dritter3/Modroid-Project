@@ -3,7 +3,7 @@ package com.example.modroid_app.view;
 import java.util.List;
 
 import com.example.modroid_app.R;
-import com.example.modroid_app.SQLHelper.DatabaseHandler;
+import com.example.modroid_app.database.DatabaseHandler;
 import com.example.modroid_app.model.User;
 
 import android.os.Bundle;

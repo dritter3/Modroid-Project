@@ -1,7 +1,7 @@
 package com.example.modroid_app.view;
 
 import com.example.modroid_app.R;
-import com.example.modroid_app.SQLHelper.DatabaseHandler;
+import com.example.modroid_app.database.DatabaseHandler;
 import com.example.modroid_app.model.Admin.AdminAccount;
 import com.example.modroid_app.util.SystemUiHider;
 

@@ -2,7 +2,8 @@ package com.example.modroid_app.view;
 
 import java.util.List;
 import com.example.modroid_app.R;
-import com.example.modroid_app.SQLHelper.DatabaseHandler;
+import com.example.modroid_app.database.DatabaseHandler;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
