@@ -33,9 +33,9 @@ public class LoginPage extends Activity {
 
         final String admingAccount = "admin";
         final User checkDuplicate = dbHandler.getUserInfo(admingAccount);
-        if (checkDuplicate == null) {
+      /*  if (checkDuplicate == null) {
             dbHandler.addUser(admingAccount, "pass123", null);
-        }
+        }*/
 
         Button loginButton = (Button) findViewById(R.id.loginRequest);
         final TextView errorMSG = (TextView) findViewById(R.id.error_msg);
@@ -48,7 +48,7 @@ public class LoginPage extends Activity {
                 
                 final String mPassword = ((EditText) findViewById(R.id.ET_createPSW))
                         .getText().toString();
-
+                User user = new User(mName, mPassword, null);
                 // check user's id & password
                 if (dbHandler.checkDuplicateUser(AdminAccount.USER)
                         && AdminAccount.USER.getName().equals(mName)
@@ -56,9 +56,7 @@ public class LoginPage extends Activity {
                     final Intent adminPage = new Intent(LoginPage.this,
                             UserAccountManageView.class);
                     startActivity(adminPage);
-                } else if (checkDuplicate != null
-                        && checkDuplicate.getName().equals(mName)
-                        && checkDuplicate.getUserPSW().equals(mPassword)) {
+                } else if (dbHandler.checkDuplicateUser(user)) {
 
                     Intent loadLoginPage = new Intent(LoginPage.this,
                             AccountManagePage.class);

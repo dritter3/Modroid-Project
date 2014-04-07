@@ -94,5 +94,11 @@ public class User {
         }
         return false;
     }
+    
+    @Override
+    public String toString() {
+        String result = name + " " + userPSW + " " + eMail;
+        return result;
+    }
 
 }

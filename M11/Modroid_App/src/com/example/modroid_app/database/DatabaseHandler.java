@@ -377,14 +377,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         final User user = new User();
 
         if (cur != null && cur.moveToFirst()) {
-                //cur.moveToFirst();
                 do {
                     user.setName(cur.getString(0));
                     user.setUserPSW(cur.getString(1));
                     user.setEmail(cur.getString(2));
-
+                    Log.d("bombom", cur.getString(0) + " " + cur.getString(1) + " " + cur.getString(2));
                 } while (cur.moveToNext());
-                
+
             }
 
         if (user.getName() == null) {
@@ -564,7 +563,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             Log.d("checkDuplicateUser : ", "true");
             done = true;
         }
-        Log.d("checkDuplicateUser : ", "false");
         return done;
     }
 
