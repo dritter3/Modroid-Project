@@ -1,4 +1,4 @@
-repository
+Modroid Project
 ==========
 
-repository for the Class
+Android Project for CS2340 class
